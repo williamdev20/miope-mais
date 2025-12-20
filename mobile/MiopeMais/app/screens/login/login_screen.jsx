@@ -9,8 +9,6 @@ export default function LoginScreen({ navigation }) {
     const checkCredentials = () => {
         if (email.trim() === "" && password.trim() === "") {
             alert("Campos faltando!")
-        } else {
-            navigation.navigate("Signup")
         }
     }
 
