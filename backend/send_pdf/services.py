@@ -1,9 +1,9 @@
 import pymupdf
-import json
+#import json
 
-def create_book_from_pdf(pdf_path: str) -> str:
+def create_book_from_pdf(pdf_path: bytes) -> dict:
     try:
-        doc = pymupdf.open(pdf_path)
+        doc = pymupdf.open(stream=pdf_path, filetype="pdf")
     except pymupdf.FileNotFoundError:
         raise ValueError("error Não foi possível encontrar este PDF!")
     
@@ -18,7 +18,7 @@ def create_book_from_pdf(pdf_path: str) -> str:
 
     doc.close()
     
-    book_json: str = json.dumps(book, ensure_ascii=False)
+    #book_json: str = json.dumps(book, ensure_ascii=False)
 
-    return book_json
+    return book
 
