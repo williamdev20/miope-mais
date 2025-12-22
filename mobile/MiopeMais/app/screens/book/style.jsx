@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
         width: "100%",
         backgroundColor: "#f5f5f5"
     },
@@ -29,6 +28,9 @@ export const styles = StyleSheet.create({
     },
 
     textBook: {
-        padding: 20
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 40,
+        paddingBottom: 40
     }
 })
