@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
         width: "100%",
         backgroundColor: "#f5f5f5"
@@ -18,12 +17,13 @@ export const styles = StyleSheet.create({
         backgroundColor: "#e4e4e4ff",
         padding: 25,
         top: 0,
-        position: "absolute"
+        position: "absolute",
+        zIndex: 1000
     },
 
     logo: {
-        width: 30,
-        height: 30,
+        width: 35,
+        height: 35,
         marginTop: "5%"
     },
 
@@ -35,10 +35,10 @@ export const styles = StyleSheet.create({
 
     libraryContainer: {
         justifyContent: "center",
+        paddingTop: "40%",
         gap: 70,
-        marginTop: 100,
         flexDirection: "row",
-        flexWrap: "wrap",
+        flexWrap: "wrap"
     },
 
     createBook: {
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
     },
 
     book: {
-        backgroundColor: "#1a1625ff",
+        backgroundColor: "#dbdadcff",
         width: 130,
         height: 150,
         borderRadius: 15,

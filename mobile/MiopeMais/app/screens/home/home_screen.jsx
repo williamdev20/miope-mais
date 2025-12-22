@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Image, Text, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
+import { View, Image, Text, TouchableOpacity, TouchableWithoutFeedback, ScrollView } from "react-native";
 import { File } from "expo-file-system";
 import * as DocumentPicker from "expo-document-picker";
 import { styles } from "./styles/style";
@@ -46,20 +46,45 @@ export default function HomeScreen({ navigation }) {
                 <Menu close={() => setShowMenu(false)} />
             )}
 
-
-            <View style={styles.libraryContainer}>
-
-                <TouchableOpacity onPress={pickFile} style={styles.createBook}>
-                    <Text style={styles.createBookText}>+</Text>
-                </TouchableOpacity>
-
+            <ScrollView>
                 <View style={styles.libraryContainer}>
-                    <View style={styles.book}>
+
+                    <TouchableOpacity onPress={pickFile} style={styles.createBook}>
+                        <Text style={styles.createBookText}>+</Text>
+                    </TouchableOpacity>
+
+                    
+                    <TouchableOpacity style={styles.book}>
                         <Text>Livro</Text>
-                    </View>
+                    </TouchableOpacity>
+                    
+                    {/* SÓ TESTE DAQUI PRA BAIXO */}
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.book}>
+                        <Text>Livro</Text>
+                    </TouchableOpacity>
+                    
+                    
+
                 </View>
-                
-            </View>
+            </ScrollView>
 
 
         </View>
