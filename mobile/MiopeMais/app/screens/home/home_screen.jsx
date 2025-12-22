@@ -54,7 +54,7 @@ export default function HomeScreen({ navigation }) {
                     </TouchableOpacity>
 
                     
-                    <TouchableOpacity style={styles.book}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Book")} style={styles.book}>
                         <Text>Livro</Text>
                     </TouchableOpacity>
                     

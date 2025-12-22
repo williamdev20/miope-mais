@@ -38,7 +38,8 @@ export const styles = StyleSheet.create({
         paddingTop: "40%",
         gap: 70,
         flexDirection: "row",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        marginBottom: 50
     },
 
     createBook: {
