@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'send_pdf',
     "book",
+    "library",
 ]
 
 MIDDLEWARE = [

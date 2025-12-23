@@ -6,14 +6,15 @@ from rest_framework import status
 from send_pdf.services import create_book_from_pdf
 from book.serializers import BookSerializer
 from book.models import Book
-import base64
+from library.models import Library
+from library.serializers import LibrarySerializer
 
 class GetPDFAPIView(APIView):
     parser_classes = [MultiPartParser, FormParser]
     
     def get(self, request):
-        books = Book.objects.all()
-        serializer = BookSerializer(books, many=True)
+        libraries = Library.objects.all()
+        serializer = LibrarySerializer(libraries, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -22,25 +23,28 @@ class GetPDFAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         
         pdf_file = serializer.validated_data["pdf"] # type: ignore
-        #if isinstance(pdf_file, (InMemoryUploadedFile, TemporaryUploadedFile)):
 
         pdf_bytes = pdf_file.read()
-       # pdf_base64 = base64.b64encode(pdf_bytes).decode("utf-8")
         book = create_book_from_pdf(pdf_bytes)
-
+        
 
         books: list = []
 
         for page in range(len(book)):
             b = Book.objects.create(
-                content=book[page + 1],
-                pages=page + 1
+                pages=page + 1,
+                content=book[page + 1]
             )
 
-            books.append(BookSerializer(b).data)
+            library = Library.objects.create(
+                name=pdf_file.name,
+                book=b
+            )
 
-        #print(book[1])
-        return Response(books, status=status.HTTP_201_CREATED)
+            books.append(b)
+
+        library_serializer = LibrarySerializer(library)
+        return Response(library_serializer.data, status=status.HTTP_201_CREATED)
 
         """
         return Response({

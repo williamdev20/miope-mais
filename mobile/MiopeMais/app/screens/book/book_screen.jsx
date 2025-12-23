@@ -1,13 +1,27 @@
 import { View, Text, TouchableWithoutFeedback } from "react-native";
-import { styles } from "./style";
+import { styles } from "./styles/style";
 import { useState } from "react";
+import PreferenceMenu from "./preference_menu";
+
+// Para implementações futuras: Permitir que o usuário controle a página atual pelos botões de volume do celular
 
 export default function BookScreen() {
 
-    const objetoDoLivro = {1: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.[ PARTE 01 ]", 2: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 02 ]", 3: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 03 ]", 4: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 04 ]"};
-    
-    const [currentPage, setCurrentPage] = useState(0);
+    const objetoDoLivro = {1: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 01 ]", 2: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 02 ]", 3: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 03 ]", 4: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. [ PARTE 04 ]"};
 
+    const [currentPage, setCurrentPage] = useState(0);
+    const [showPreferenceMenu, setShowPreferenceMenu] = useState(false);
+
+    // Styles config on access Preference Menu
+    const [flex, setFlex] = useState(0);
+    const [justifyContent, setJustifyContent] = useState("");
+    const [alignItems, setAlignItems] = useState("");
+    const [paddingHorizontal, setPaddingHorizontal] = useState(20);
+    const [paddingVertical, setPaddingVertical] = useState(40);
+    const [width, setWidth] = useState("");
+    const [height, setHeight] = useState("");
+
+    // Page functions
     const nextPage = () => {
         if (currentPage != (Object.keys(objetoDoLivro).length - 1)) {
             setCurrentPage(currentPage + 1);
@@ -24,25 +38,45 @@ export default function BookScreen() {
         }
     }
 
+    // Preference menu functions
+    const preferenceMenuFunc = () => {
+        setJustifyContent("center");
+        setAlignItems("center");
+        setPaddingHorizontal(40);
+        setPaddingVertical(0);
+        setWidth("80%");
+        setHeight("30%");
+        
+        //setShowPreferenceMenu(true);
+    }
 
     return (
         <View style={styles.container}>
 
             <View style={styles.area}>
                 <TouchableWithoutFeedback onPress={previousPage} >
-                    <View style={styles.zone} />
+                    <View style={styles.touchZone} />
                 </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback onPress={() => alert("Centro")} >
-                    <View style={styles.zone} />
+                <TouchableWithoutFeedback onPress={preferenceMenuFunc}>
+                    <View style={styles.touchZone} />
                 </TouchableWithoutFeedback>
 
                 <TouchableWithoutFeedback onPress={nextPage} >
-                    <View style={styles.zone} />
+                    <View style={styles.touchZone} />
                 </TouchableWithoutFeedback>
             </View>
 
-            <View style={styles.textBook}>
+            {showPreferenceMenu && (
+                <PreferenceMenu />
+            )}
+
+            <View style={[styles.textBook, {
+                paddingHorizontal: paddingHorizontal,
+                paddingVertical: paddingVertical,
+                width: width,
+                height: height  
+            }]}>
                 
                 <Text>
                     {Object.values(objetoDoLivro)[currentPage]}
