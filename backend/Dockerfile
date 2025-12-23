@@ -1,0 +1,21 @@
+FROM python:3.12-bookworm
+
+WORKDIR /core
+
+RUN apt-get update && \
+    apt-get install -y curl
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Essa linha está no site oficial do uv para usar num Dockerfile
+ENV PATH="/root/.local/bin/:$PATH"
+
+COPY pyproject.toml uv.lock ./
+
+RUN uv sync
+
+COPY . .
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "uv run python3 manage.py migrate && uv run python3 manage.py runserver 0.0.0.0:8000"]

@@ -1,5 +1,4 @@
 import pymupdf
-#import json
 
 def create_book_from_pdf(pdf_path: bytes) -> dict:
     try:
@@ -9,7 +8,6 @@ def create_book_from_pdf(pdf_path: bytes) -> dict:
     
     book: dict[int, str] = {}
 
-
     for page_num in range(doc.page_count):
         page: pymupdf.Page = doc.load_page(page_num)
         text: str = str(page.get_text())
@@ -17,8 +15,5 @@ def create_book_from_pdf(pdf_path: bytes) -> dict:
         book[page_num+1] = text
 
     doc.close()
-    
-    #book_json: str = json.dumps(book, ensure_ascii=False)
 
     return book
-
