@@ -4,7 +4,7 @@ def create_book_from_pdf(pdf_path: bytes) -> dict:
     try:
         doc = pymupdf.open(stream=pdf_path, filetype="pdf")
     except pymupdf.FileNotFoundError:
-        raise ValueError("error Não foi possível encontrar este PDF!")
+        raise ValueError("[ERROR] Don't was possible find this PDF!")
     
     book: dict[int, str] = {}
 
