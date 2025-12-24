@@ -20,12 +20,12 @@ class IngestionPDFAPIView(APIView):
         pdf_bytes = pdf_file.read()
 
         pages = create_book_from_pdf(pdf_bytes)
-
+        
         book = Book.objects.create(name=pdf_file.name)
 
         for page in range(len(pages)):
             Page.objects.create(
-                content=pages[page],
+                content=pages[page + 1],
                 book=book
             )
 

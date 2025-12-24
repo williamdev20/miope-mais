@@ -7,3 +7,6 @@ class Book(models.Model):
     class Meta:
         verbose_name = "Book"
         verbose_name_plural = "Books"
+
+    def __str__(self) -> str:
+        return f"Name: {self.name}"
