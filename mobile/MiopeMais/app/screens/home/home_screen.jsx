@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }) {
             console.log("Upload done sucessfully!")
 
         } catch (error) {
-            console.log(`Houve um erro: [ERROR] ${error}`);
+            console.log(`There was an error: [ERROR] ${error}`);
         }
     }
 

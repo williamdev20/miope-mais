@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         width: "100%",
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "lightyellow"
     },
 
     area: {
@@ -17,8 +17,7 @@ export const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         top: 0,
-        position: "absolute"
-
+        position: "absolute",
     },
 
     touchZone: {
@@ -27,9 +26,11 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
 
+    textContainer: {},
+
     textBook: {
         paddingHorizontal: 20,
         paddingVertical: 40,
-        backgroundColor: "lightblue"
-    }
+        backgroundColor: "lightyellow"
+    },
 })

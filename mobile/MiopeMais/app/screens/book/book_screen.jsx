@@ -21,6 +21,9 @@ export default function BookScreen() {
     const [width, setWidth] = useState("");
     const [height, setHeight] = useState("");
 
+
+    const [zIndex, setZIndex] = useState(1);
+
     // Page functions
     const nextPage = () => {
         if (currentPage != (Object.keys(objetoDoLivro).length - 1)) {
@@ -40,20 +43,33 @@ export default function BookScreen() {
 
     // Preference menu functions
     const preferenceMenuFunc = () => {
-        setJustifyContent("center");
-        setAlignItems("center");
-        setPaddingHorizontal(40);
-        setPaddingVertical(0);
-        setWidth("80%");
-        setHeight("30%");
+        // OBS: Talvez eu precise colocar um if aqui pra atribuir essas estilizações apenas se o showPreference for True
+        // PS: Deu bom não :(
+        // PS2: DEU BOM SIM :D
+        setShowPreferenceMenu(true);
+       
+        if (showPreferenceMenu === true) {
+            // area
+            setZIndex(0);
+            // textContainer
+            setFlex(1);
+            setJustifyContent("center");
+            setAlignItems("center");
+            // textBook
+            setPaddingHorizontal(30);
+            setPaddingVertical(20);
+            setWidth("80%");
+            setHeight("75%");
+        }
         
-        //setShowPreferenceMenu(true);
     }
 
     return (
         <View style={styles.container}>
 
-            <View style={styles.area}>
+            <View style={[styles.area, {
+                zIndex: zIndex
+            }]}>
                 <TouchableWithoutFeedback onPress={previousPage} >
                     <View style={styles.touchZone} />
                 </TouchableWithoutFeedback>
@@ -68,24 +84,30 @@ export default function BookScreen() {
             </View>
 
             {showPreferenceMenu && (
-                <PreferenceMenu />
+                <PreferenceMenu closePreferenceMenu={() => setShowPreferenceMenu(false)} />
             )}
 
-            <View style={[styles.textBook, {
-                paddingHorizontal: paddingHorizontal,
-                paddingVertical: paddingVertical,
-                width: width,
-                height: height  
+            <View style={[styles.textContainer, {
+                flex: flex,
+                justifyContent: justifyContent,
+                alignItems: alignItems
             }]}>
-                
-                <Text>
-                    {Object.values(objetoDoLivro)[currentPage]}
-                </Text>
+                <View style={[styles.textBook, {
+                    paddingHorizontal: paddingHorizontal,
+                    paddingVertical: paddingVertical,
+                    width: width,
+                    height: height  
+                }]}>
+                    
+                    <Text>
+                        {Object.values(objetoDoLivro)[currentPage]}
+                    </Text>
 
-                {/*{ Object.values(objetoDoLivro).map((content, page) => {
-                    return <Text key={page}>{currentPage}</Text>
-                }) }*/}
-                
+                    {/*{ Object.values(objetoDoLivro).map((content, page) => {
+                        return <Text key={page}>{currentPage}</Text>
+                    }) }*/}
+                    
+                </View>
             </View>
         </View>
     )
