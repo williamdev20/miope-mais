@@ -4,8 +4,14 @@ import Previous from "../../../components/Previous";
 import Slider from "@react-native-community/slider";
 import { useNavigation } from "expo-router";
 
-// commit: Adicionar menu de preferências na tela de leitura
-export default function PreferenceMenu({ closePreferenceMenu }) {
+export default function PreferenceMenu({
+    closePreferenceMenu,
+    nextPageProps,
+    previousPageProps,
+    NextOrPreviousPageWithSliderProps,
+    numberOfPages,
+    currentPage
+}) {
     const navigation = useNavigation();
 
     return (
@@ -22,19 +28,24 @@ export default function PreferenceMenu({ closePreferenceMenu }) {
             </View>
 
             <View style={styles.footerContainer}>
-                <Text style={styles.footerText}>Aqui é o Footer seu otário</Text>
-                <Text>{"<-"}</Text>
-                <Slider 
-                    style={{width: 250, height: 80}}
-                    disabled={false}
-                    thumbTintColor="#fff"
-                    minimumValue={0}
-                    maximumValue={100}
-                    value={25}
-                    minimumTrackTintColor="#4a4040ff"
-                    maximumTrackTintColor="#FFF"
-                />
-                <Text>{"->"}</Text>
+                <Text style={styles.footerText}>{currentPage}/{numberOfPages}</Text>
+
+                <View style={styles.progressBookContainer}>
+                    <Text style={styles.nextPageIcon} onPress={previousPageProps}>{"<-"}</Text>
+                    <Slider 
+                        style={{width: 240, height: 45}}
+                        disabled={false}
+                        thumbTintColor="#fff"
+                        minimumValue={1}
+                        maximumValue={numberOfPages}
+                        value={currentPage}
+                        step={1}
+                        onValueChange={NextOrPreviousPageWithSliderProps}
+                        minimumTrackTintColor="#4a4040ff"
+                        maximumTrackTintColor="#FFF"
+                    />
+                    <Text style={styles.previousPageIcon} onPress={nextPageProps}>{"->"}</Text>
+                </View>
             </View>
             
         </View>

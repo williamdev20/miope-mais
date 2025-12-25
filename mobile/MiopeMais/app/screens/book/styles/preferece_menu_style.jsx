@@ -52,23 +52,31 @@ export const styles = StyleSheet.create({
         width: "100%",
         flexDirection: "column",
         backgroundColor: "#000",
-        padding: 35,
-        bottom: 0,
+        bottom: -5,
         position: "absolute",
         zIndex: 1000
     },
 
     footerText: {
-        color: "#fff"
+        color: "#fff",
+    },
+
+    progressBookContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+        marginBottom: 55
     },
 
     nextPageIcon: {
         color: "#fff",
-        fontSize: 20
+        fontSize: 30,
+        width: 50
     },
 
     previousPageIcon: {
         color: "#fff",
-        fontSize: 20
+        fontSize: 30,
+        width: 50
     }
 })
