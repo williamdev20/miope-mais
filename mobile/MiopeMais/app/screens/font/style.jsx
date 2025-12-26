@@ -98,15 +98,5 @@ export const styles = StyleSheet.create({
         bottom: 0,
         position: "absolute",
         zIndex: 1000
-    },
-
-    buttonSave: {
-        backgroundColor: "lightgreen",
-        padding: 10,
-        width: 130,
-        height: 50,
-        textAlign: "center",
-        borderRadius: 10,
-        fontSize: 20
     }
 })

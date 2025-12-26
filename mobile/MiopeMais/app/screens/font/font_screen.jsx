@@ -2,19 +2,20 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { styles } from "./style";
 import PreviousBook from "../../../components/PreviousBook";
+import SaveButton from "../../../components/SaveButton";
 
 export default function FontScreen() {
     const [fontSize, setFontSize] = useState(15);
     
     const increaseFontSizeFunc = () => {
-        setFontSize(fontSize+2);
+        if (fontSize < 55) {
+            setFontSize(fontSize+2);
+        }
     }
 
     const decreaseFontSizeFunc = () => {
-        if (fontSize > 0) {
-            while (fontSize > 0) {
-                setFontSize(fontSize-2);
-            }
+        if (fontSize > 1) {
+            setFontSize(fontSize-2);
         }
         
     }
@@ -43,9 +44,7 @@ export default function FontScreen() {
             </View>
 
             <View style={styles.footerContainer}>
-                <TouchableOpacity>
-                    <Text style={styles.buttonSave}>Salvar</Text>
-                </TouchableOpacity>
+                <SaveButton />
             </View>
 
         </View>
