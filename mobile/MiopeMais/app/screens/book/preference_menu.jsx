@@ -23,7 +23,7 @@ export default function PreferenceMenu({
                     <TouchableOpacity onPress={() => navigation.navigate("Home")}>
                         <Image style={styles.palleteIcon} source={require("../../../assets/preference/pallete.png")}/>
                     </TouchableOpacity>
-                    <Text style={styles.fontIcon} onPress={() => navigation.navigate("Home")}>Aa</Text>
+                    <Text style={styles.fontIcon} onPress={() => navigation.navigate("Font")}>Aa</Text>
                 </View>
             </View>
 
