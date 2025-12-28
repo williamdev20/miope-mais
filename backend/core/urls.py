@@ -5,4 +5,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("ingestion/", include("ingestion_pdf.urls")),
     path("books/", include("books.urls")),
+    path("auth/", include("dj_rest_auth.urls")),
+    path('auth/signup/', include('dj_rest_auth.registration.urls'))
 ]

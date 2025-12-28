@@ -14,16 +14,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Page',
+            name='Library',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('current_page', models.IntegerField()),
                 ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='books.book')),
             ],
-            options={
-                'verbose_name': 'Page',
-                'verbose_name_plural': 'Pages',
-            },
         ),
     ]

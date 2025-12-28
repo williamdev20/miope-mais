@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
         marginBottom: 50,
         top: 0,
         left: 0,
-        position: "absolute"
+        position: "absolute",
+        zIndex: 1000
     },
 
     textHeader: {

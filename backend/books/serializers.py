@@ -4,9 +4,7 @@ from books.models import Book
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ["id", "name"]
+        fields = ["id", "name", "number_of_pages"]
         extra_kwargs = {
             "id": {"read_only": True}
         }
-
-# Lack put Serializer Class for view pages from the book

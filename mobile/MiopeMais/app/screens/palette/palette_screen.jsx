@@ -1,12 +1,19 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import { styles } from "./style";
-import ColorPicker from "react-native-wheel-color-picker";
-import SaveButton from "../../../components/SaveButton";
 import { useState } from "react";
+import { Checkbox } from 'expo-checkbox';
+import PreviousBook from "../../../components/PreviousBook";
+import ColorPickerComponent from "./color_picker";
+import SaveButton from "../../../components/SaveButton";
 
 export default function PaletteScreen() {
-
     const [colorModal, setColorModal] = useState(false);
+    const [isCheckedBackgroundColor1, setCheckedBackgroundColor1] = useState(true);
+    const [isCheckedBackgroundColor2, setCheckedBackgroundColor2] = useState(false);
+    const [isCheckedBackgroundColor3, setCheckedBackgroundColor3] = useState(false);
+    const [isCheckedBackgroundColor4, setCheckedBackgroundColor4] = useState(false);
+    const [isCheckedTextColor1, setCheckedTextColor1] = useState(false)
+    const [isCheckedTextColor2, setCheckedTextColor2] = useState(true)
 
     const colorModalFunc = () => {
         setColorModal(true);
@@ -15,6 +22,9 @@ export default function PaletteScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
+                <View style={styles.previousBookHeader}>
+                    <PreviousBook />
+                </View>
                 <Text style={styles.textHeader}>Mudar cores</Text>
             </View>
 
@@ -29,13 +39,33 @@ export default function PaletteScreen() {
                         <View style={styles.previewColor} />
 
                         <View style={styles.colorContainer1}>
-                            <View style={styles.color1} />
-                            <View style={styles.color2} />
+                            <Checkbox
+                                style={styles.backgroundColor1}
+                                value={isCheckedBackgroundColor1}
+                                onValueChange={setCheckedBackgroundColor1}
+                                color={isCheckedBackgroundColor1 ? '#4630EB' : undefined}
+                            />
+                            <Checkbox
+                                style={styles.backgroundColor2}
+                                value={isCheckedBackgroundColor2}
+                                onValueChange={setCheckedBackgroundColor2}
+                                color={isCheckedBackgroundColor2 ? '#4630EB' : undefined}
+                            />
                         </View>
 
                         <View style={styles.colorContainer2}>
-                            <View style={styles.color3} />
-                            <View style={styles.color4} /> 
+                            <Checkbox
+                                style={styles.backgroundColor3}
+                                value={isCheckedBackgroundColor3}
+                                onValueChange={setCheckedBackgroundColor3}
+                                color={isCheckedBackgroundColor3 ? '#4630EB' : undefined}
+                            />
+                            <Checkbox
+                                style={styles.backgroundColor4}
+                                value={isCheckedBackgroundColor4}
+                                onValueChange={setCheckedBackgroundColor4}
+                                color={isCheckedBackgroundColor4 ? '#4630EB' : undefined}
+                            /> 
                         </View>
 
                         <TouchableOpacity onPress={colorModalFunc}>
@@ -56,8 +86,18 @@ export default function PaletteScreen() {
                     <View style={styles.changeTextColorContainer}>
                         <View style={styles.previewColor} />
 
-                        <View style={styles.color1} />
-                        <View style={styles.color2} />
+                        <Checkbox
+                            style={styles.textColor1}
+                            value={isCheckedTextColor1}
+                            onValueChange={setCheckedTextColor1}
+                            color={isCheckedTextColor1 ? '#4630EB' : undefined}
+                        />
+                        <Checkbox
+                            style={styles.textColor2}
+                            value={isCheckedTextColor2}
+                            onValueChange={setCheckedTextColor2}
+                            color={isCheckedTextColor2 ? '#4630EB' : undefined}
+                        />
 
                         <TouchableOpacity onPress={colorModalFunc}>
                             <Image style={styles.editIcon} source={require("../../../assets/preference/edit.png")} />
@@ -72,17 +112,7 @@ export default function PaletteScreen() {
             </View>
 
              {colorModal && (
-                <View style={styles.colorPickerContainer}>
-                    <ColorPicker
-                        style={styles.colorPicker}
-                        thumbSize={40}
-                        sliderSize={40}
-                        noSnap={true}
-                        row={false}
-                        useNativeDriver={false}
-                        useNativeLayout={false}
-                    />
-                </View>
+                <ColorPickerComponent close={() => setColorModal(false)} />
             )}
         </View>
     )

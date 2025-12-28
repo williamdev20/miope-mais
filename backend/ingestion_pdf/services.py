@@ -1,6 +1,6 @@
 import pymupdf
 
-def create_book_from_pdf(pdf_path: bytes) -> dict:
+def create_book_from_pdf(pdf_path: bytes) -> dict[int, str]:
     try:
         doc = pymupdf.open(stream=pdf_path, filetype="pdf")
     except pymupdf.FileNotFoundError:

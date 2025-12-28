@@ -2,7 +2,7 @@ import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "expo-router";
 
 export default function PreviousBook() {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
 
     return (
         <View>
@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         backgroundColor: "#fff",
-        borderRadius: 100
+        borderRadius: 100,
+        left: 0,
+        position: "absolute",
+        zIndex: 1000
     }
 })

@@ -20,7 +20,7 @@ export default function PreferenceMenu({
             <View style={styles.headerContainer}>
                 <Previous closePreferenceMenuByPreviousFunc={closePreferenceMenu} />
                 <View style={styles.preferenceContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Palette")}>
                         <Image style={styles.palleteIcon} source={require("../../../assets/preference/pallete.png")}/>
                     </TouchableOpacity>
                     <Text style={styles.fontIcon} onPress={() => navigation.navigate("Font")}>Aa</Text>

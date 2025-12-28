@@ -20,7 +20,17 @@ export const styles = StyleSheet.create({
         position: "absolute",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 70
+        marginTop: 70,
+    },
+
+    previousBookHeader: {
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 1000
     },
 
     textHeader: {
@@ -46,7 +56,8 @@ export const styles = StyleSheet.create({
     paletteIcon: {
         width: 30,
         height: 30,
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        borderRadius: 100
     },
 
     genericText: {
@@ -75,8 +86,8 @@ export const styles = StyleSheet.create({
         gap: 5
     },
 
-    color1: {
-        backgroundColor: "red",
+    backgroundColor1: {
+        backgroundColor: "#f5f5f5",
         width: 30,
         height: 30,
         borderWidth: 1,
@@ -84,8 +95,8 @@ export const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-    color2: {
-        backgroundColor: "blue",
+    backgroundColor2: {
+        backgroundColor: "#1e1e1e",
         width: 30,
         height: 30,
         borderWidth: 1,
@@ -93,8 +104,8 @@ export const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-    color3: {
-        backgroundColor: "green",
+    backgroundColor3: {
+        backgroundColor: "#000b3e",
         width: 30,
         height: 30,
         borderWidth: 1,
@@ -102,8 +113,8 @@ export const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-    color4: {
-        backgroundColor: "brown",
+    backgroundColor4: {
+        backgroundColor: "#FFFFE0",
         width: 30,
         height: 30,
         borderWidth: 1,
@@ -114,25 +125,8 @@ export const styles = StyleSheet.create({
     editIcon: {
         width: 30,
         height: 30,
-        backgroundColor: "#fff"
-    },
-
-    colorPickerContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        zIndex: 1,
-        backgroundColor: "#131416ff"
-    },
-
-    colorPicker: {
-        width: "100%",
-        height: "100%",
-        padding: "7%",
-        marginBottom: "45%"
+        backgroundColor: "#f2ececff",
+        borderRadius: 5
     },
 
     textContainer: {
@@ -153,6 +147,24 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 8
+    },
+
+    textColor1: {
+        backgroundColor: "#f5f5f5",
+        width: 30,
+        height: 30,
+        borderWidth: 1,
+        borderColor: "#fff",
+        borderRadius: 5
+    },
+
+    textColor2: {
+        backgroundColor: "#1e1e1e",
+        width: 30,
+        height: 30,
+        borderWidth: 1,
+        borderColor: "#fff",
+        borderRadius: 5
     },
 
     footerContainer: {
