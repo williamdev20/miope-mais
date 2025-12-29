@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from pages.models import Page
 from books.models import Book
 from books.serializers import BookSerializer
+from libraries.models import Library
 from ingestion_pdf.serializers import IngestionPDFSerializer
 from ingestion_pdf.services import create_book_from_pdf
 from rest_framework.parsers import FormParser, MultiPartParser
@@ -37,6 +38,13 @@ class IngestionPDFAPIView(APIView):
         Aí aqui eu crio uma library recebendo esse book que foi criado
         e o usuário vai ser o que está logado
         """
+
+        Library.objects.create(
+            user=request.user,
+            book=book,
+            current_page=1
+        )
+
 
         book_serializer = BookSerializer(book)
         return Response(book_serializer.data, status=status.HTTP_201_CREATED)
