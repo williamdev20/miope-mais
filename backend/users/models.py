@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from users.services import default_preferences
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -35,9 +34,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    username = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(unique=True, null=False, blank=False)
-    preferences = models.JSONField(default=default_preferences, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = "email"
@@ -51,3 +48,14 @@ class User(AbstractUser):
 
     def __str__(self) -> str:
         return f"Email: {self.email}"
+
+
+class UserPreference(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    backgroundColor = models.CharField(default="#f5f5f5", max_length=9, null=False, blank=False)
+    fontColor = models.CharField(default="#000", max_length=9, null=False, blank=False)
+    fontSize = models.IntegerField(default=15, null=False, blank=False)
+
+    class Meta:
+        verbose_name = "UserPreference"
+        verbose_name_plural = "UserPreferences"

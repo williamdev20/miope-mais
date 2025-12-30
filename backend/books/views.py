@@ -12,7 +12,7 @@ class BookListAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        books = Book.objects.filter(library__user=request.user)
+        books = Book.objects.filter(owner=request.user)
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -21,6 +21,6 @@ class BookDetailAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, id):
-        pages = get_list_or_404(Page, book=id, book__library__user=request.user)
+        pages = get_list_or_404(Page, book=id, book__owner=request.user)
         serializer = PageDetailSerializer(pages, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

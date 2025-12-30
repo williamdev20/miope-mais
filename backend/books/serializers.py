@@ -6,5 +6,7 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = ["id", "name", "number_of_pages"]
         extra_kwargs = {
-            "id": {"read_only": True}
+            "id": {"read_only": True},
+            "name": {"read_only": True},
+            "number_of_pages": {"read_only": True}
         }

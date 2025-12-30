@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     "pages",
     "ingestion_pdf",
     "users",
-    "libraries",
 ]
 
 SITE_ID = 1
@@ -78,7 +77,8 @@ REST_AUTH = {
     "USE_JWT": True,
     #"JWT_AUTH_COOKIE": "_access",
     #"JWT_AUTH_REFRESH_COOKIE": "_refresh",
-    "JWT_AUTH_HTTPONLY": False
+    "JWT_AUTH_HTTPONLY": False,
+    "REGISTER_SERIALIZER": "users.serializers.RegisterSerializer"
 }
 
 MIDDLEWARE = [
