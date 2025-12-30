@@ -4,6 +4,19 @@ from users.models import UserPreference
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from dj_rest_auth.registration.views import SocialLoginView
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+    callback_url = os.getenv("GOOGLE_OAUTH_CALLBACK_URL") # Colocar a URL do mobile aqui
+    client_class = OAuth2Client
+
 
 class UserPreferenceAPIView(APIView):
     permission_classes = [IsAuthenticated]
