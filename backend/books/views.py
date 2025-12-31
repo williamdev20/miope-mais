@@ -29,31 +29,15 @@ class BookDetailAPIView(APIView):
 class SetBookCurrentPageAPIBView(APIView):
     permission_classes = [IsAuthenticated]
 
-    """
-    Oia, deu erro porque não tem nenhum livro criado, esquece não eu do futuro :p
-    """
-
-    """
-    Coloca um serializer diferente aqui q o unico campo vai ser o current_page
-
-    Coloca um try catch no ingestion/views.py, pra capturar o erro caso dê erro
-    no try catch do ingestion/services.py
-
-    Seguinte, no patch eu preciso dizer também qual é o id do livro que eu quero passar a página,
-    porque agora só tem uma então ta belezinha, mas quando tiver vários, eu não vou saber qual
-    livro que eu quero passar a página
-    """
-
     def get(self, request):
         books = Book.objects.filter(owner=request.user)
         serializer = BookCurrentPageSerializer(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def patch(self, request, id):
+
+    def put(self, request, id):
         book = Book.objects.get(owner=request.user, id=id)
         serializer = BookCurrentPageSerializer(book, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
-
-    

@@ -20,7 +20,6 @@ Como eu vou fazer pra renderizar isso no mobile com RN, tem que ver com os cara
 lá :p
 """
 
-
 class IngestionPDFAPIView(APIView):
     parser_classes = [FormParser, MultiPartParser]
     permission_classes = [IsAuthenticated]
@@ -29,13 +28,13 @@ class IngestionPDFAPIView(APIView):
         serializer = IngestionPDFSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        pdf_file = serializer.validated_data["pdf"] # type: ignore
+        pdf_file = serializer.validated_data["pdf"] #type: ignore[assignment]
         pdf_bytes = pdf_file.read()
 
         try:
             pages = create_book_from_pdf(pdf_bytes)
-        except ValueError as error:
-            return Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
+        except TypeError as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
         book = Book.objects.create(
             owner=request.user,
@@ -49,12 +48,5 @@ class IngestionPDFAPIView(APIView):
                 book=book
             )
 
-        """
-        Aí aqui eu crio uma library recebendo esse book que foi criado
-        e o usuário vai ser o que está logado
-        """
-
-
         book_serializer = BookSerializer(book)
         return Response(book_serializer.data, status=status.HTTP_201_CREATED)
-
