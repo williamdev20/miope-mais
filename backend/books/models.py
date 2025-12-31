@@ -4,6 +4,7 @@ from users.models import User
 class Book(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     name = models.CharField(max_length=255, null=False, blank=False)
+    current_page = models.IntegerField(default=1, null=False, blank=False)
     number_of_pages = models.IntegerField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

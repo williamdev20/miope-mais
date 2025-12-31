@@ -32,7 +32,10 @@ class IngestionPDFAPIView(APIView):
         pdf_file = serializer.validated_data["pdf"] # type: ignore
         pdf_bytes = pdf_file.read()
 
-        pages = create_book_from_pdf(pdf_bytes)
+        try:
+            pages = create_book_from_pdf(pdf_bytes)
+        except ValueError as error:
+            return Response({"error": error}, status=status.HTTP_400_BAD_REQUEST)
         
         book = Book.objects.create(
             owner=request.user,
