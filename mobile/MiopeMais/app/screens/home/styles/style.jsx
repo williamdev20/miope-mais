@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
         gap: 70,
         flexDirection: "row",
         flexWrap: "wrap",
-        marginBottom: 50
+        bottom: "20%"
     },
 
     createBook: {

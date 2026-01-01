@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+import { Platform } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
@@ -6,37 +8,47 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-        backgroundColor: "#000"
+        backgroundColor: "#000",
+        paddingTop: 150,
+        paddingBottom: 100
     },
 
     changeColorsContainer: {
-        gap: 25,
-        width: "100%",
         padding: 10,
+        justifyContent: "center",
+        width: "95%",
+        maxWidth: 900,
+        flexDirection: "column",
+        gap: 25,
     },
 
     headerContainer: {
-        top: 0,
         position: "absolute",
         justifyContent: "center",
-        alignItems: "center",
-        marginTop: 70,
+        width: "100%",
+        margin: 20,
+        gap: "80%",
+        padding: 25,
+        top: 0,
+        paddingVertical: 20,
+        paddingHorizontal: 25,
+        width: "100%",
     },
 
     previousBookHeader: {
-        alignItems: "center",
-        justifyContent: "center",
+        marginTop: 15,
         position: "absolute",
         top: 0,
-        left: 0,
-        width: "100%",
-        zIndex: 1000
+        left: 20,
+        zIndex: 1
     },
 
     textHeader: {
-        fontSize: 70,
+        flex: 1,
+        fontSize: Platform.OS === "web" ? Math.min(RFValue(30), 60) : RFValue(60),
         textAlign: "center",
-        color: "#fff"
+        color: "#fff",
+        flexShrink: 1
     },
 
     backgroundContainer: {
@@ -168,7 +180,7 @@ export const styles = StyleSheet.create({
     },
 
     footerContainer: {
-        bottom: "10%",
+        bottom: Platform.OS === "web" ? "5%" : "12%",
         position: "absolute",
         zIndex: 2      
     }

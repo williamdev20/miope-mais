@@ -65,13 +65,15 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 10,
-        marginBottom: 55
+        marginBottom: 55,
+        position: "absolute",
+        zIndex: 999
     },
 
     nextPageIcon: {
         color: "#fff",
         fontSize: 30,
-        width: 50
+        width: 50,
     },
 
     previousPageIcon: {

@@ -11,12 +11,12 @@ const Stack = createNativeStackNavigator();
 export default function RootLayout() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Palette" component={PaletteScreen} />
+      <Stack.Screen name="Book" component={BookScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Login" component={LoginScreen} /> 
       <Stack.Screen name="Signup" component={SignupScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Book" component={BookScreen} />
       <Stack.Screen name="Font" component={FontScreen}/>
+      <Stack.Screen name="Palette" component={PaletteScreen} />
     </Stack.Navigator>
   );
 }

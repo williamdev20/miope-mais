@@ -15,12 +15,10 @@ export default function PreviousBook() {
 
 const styles = StyleSheet.create({
     undoIcon: {
+        left: 0,
+        backgroundColor: "#fff",
         width: 35,
         height: 35,
-        backgroundColor: "#fff",
         borderRadius: 100,
-        left: 0,
-        position: "absolute",
-        zIndex: 1000
     }
 })

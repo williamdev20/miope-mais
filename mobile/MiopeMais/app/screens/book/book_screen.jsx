@@ -24,7 +24,11 @@ export default function BookScreen() {
         paddingVertical: 20,
         width: "80%",
         height: "73%"
-    } : {}
+    } : {
+        flex: 1, // ou height: "100%"
+        paddingHorizontal: 20,
+        paddingVertical: 20
+    }
 
     
     // Page functions
@@ -65,15 +69,15 @@ export default function BookScreen() {
 
             <View style={[styles.area, zIndexStyle]}>
                 <TouchableWithoutFeedback onPress={previousPage} >
-                    <View style={styles.touchZone} />
+                    <View style={[styles.touchZone, {zIndex: 1000}]} />
                 </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback onPress={preferenceMenuFunc}>
-                    <View style={styles.touchZone} />
+                <TouchableWithoutFeedback onLongPress={preferenceMenuFunc}>
+                    <View style={[styles.touchZone, {zIndex: 900}]} />
                 </TouchableWithoutFeedback>
 
                 <TouchableWithoutFeedback onPress={nextPage} >
-                    <View style={styles.touchZone} />
+                    <View style={[styles.touchZone, {zIndex: 1000}]} />
                 </TouchableWithoutFeedback>
             </View>
 
@@ -91,10 +95,11 @@ export default function BookScreen() {
             
             <View style={[styles.textContainer, textContainerStyle]}>
                 <View style={[styles.textBook, textBookStyle]}>
-                    
-                    <Text>
-                        {Object.values(objetoDoLivro)[currentPage]}
-                    </Text>
+                    <ScrollView style={{flex: 1, zIndex: 999}}>
+                        <Text>
+                            {Object.values(objetoDoLivro)[currentPage]}
+                        </Text>
+                    </ScrollView>
 
                     {/*{ Object.values(objetoDoLivro).map((content, page) => {
                         return <Text key={page}>{currentPage}</Text>

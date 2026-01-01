@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
         backgroundColor: "transparent",
         height: "100%",
         flex: 1,
+        zIndex: 1000
     },
 
     textContainer: {},

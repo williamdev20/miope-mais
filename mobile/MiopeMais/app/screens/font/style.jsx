@@ -5,26 +5,24 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        width: "100%",
-        backgroundColor: "#000b3e"
+        backgroundColor: "#000",
     },
 
     mainHeaderContainer: {
-        alignItems: "center",   
-        justifyContent: "center",
+        flex: 0.5,
         width: "100%",
         flexDirection: "column",
-        marginTop: 100,
         top: 0,
-        position: "absolute"
+        margin: 20,
     },
 
     previousBookContainer: {
-        marginBottom: 50,
+        flex: 0.5,
+        marginTop: 15,
+        
         top: 0,
-        left: 0,
-        position: "absolute",
-        zIndex: 1000
+        left: 20,
+        zIndex: 1
     },
 
     textHeader: {
@@ -34,41 +32,44 @@ export const styles = StyleSheet.create({
     },
 
     buttonContainer: {
+        flex: 0.5,
         backgroundColor: "transparent",
         width: "80%",
         height: "15%",
         flexDirection: "row",
-        gap: "30%",
-        marginTop: 60,
-        marginBottom: 50,
+        gap: "25%",
+        bottom: "10%",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        margin: 15
     },
 
     increaseFontSize: {
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#fff",
+        backgroundColor: "#1e1e1e",
         width: 100,
         height: 100,
         borderRadius: 10
     },
 
     increaseFontSizeText: {
-        fontSize: 45
+        fontSize: 45,
+        color: "#fff"
     },
 
     decreaseFontSize: {
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#ffffffff",
+        backgroundColor: "#1e1e1e",
         width: 100,
         height: 100,
         borderRadius: 10
     },
 
     decreaseFontSizeText: {
-        fontSize: 65
+        fontSize: 65,
+        color: "#fff"
     },
 
     previewFontSizeText: {
@@ -76,13 +77,16 @@ export const styles = StyleSheet.create({
     },
 
     previewFontSizeContainer: {
+        flex: 0.5,
         borderWidth: 1,
         borderColor: "#fff",
         width: "85%",
         height: "25%",
+        bottom: "15%",
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 5
+        borderRadius: 5,
+        margin: 20
     },
 
     previewFontSizeText: {
@@ -95,9 +99,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         width: "100%",
         flexDirection: "row",
-        marginBottom: 85,
-        bottom: 0,
-        position: "absolute",
-        zIndex: 1000
+        bottom: "10%",
     }
 })
