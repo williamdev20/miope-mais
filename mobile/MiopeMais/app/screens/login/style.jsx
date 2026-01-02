@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
@@ -15,18 +15,24 @@ export const styles = StyleSheet.create({
         gap: 40,
         width: "100%"
     },
+
+    headerContainer: {
+        top: Platform.OS === "web" ? 45 : 0,
+        paddingTop: Platform.OS === "web" ? 100 : 0
+    },
     
     logo: {
         width: 150,
         height: 150,
-        
     },
 
     formContainer: {
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
+        maxWidth: 600,
         gap: 15,
+        marginBottom: Platform.OS == "web" ? "15%" : 0
     },
 
     label: {

@@ -1,7 +1,10 @@
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles/menu";
+import { useNavigation } from "expo-router";
 
 export default function Menu({ close }) {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             
@@ -12,9 +15,15 @@ export default function Menu({ close }) {
             </View>
 
             <View style={styles.optionsPreference}>
-                <Text style={styles.options}>Ajustar cor de fundo</Text>
+                <TouchableOpacity onPress={() => navigation.navigate("Font")}>
+                    <Text style={styles.options}>Ajustar cor de fundo</Text>
+                </TouchableOpacity>
+
                 <View style={styles.line} />
-                <Text style={styles.options}>Ajustar tamanho da fonte</Text>
+
+                <TouchableOpacity onPress={() => navigation.navigate("Palette")}>
+                    <Text style={styles.options}>Ajustar tamanho da fonte</Text>
+                </TouchableOpacity>
                 <View style={styles.line} />
             </View>
 

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         width: "100%",
         flexDirection: "row",
         gap: "80%",
-        backgroundColor: "#e4e4e4ff",
+        backgroundColor: "#c2c2c2ff",
         padding: 25,
         top: 0,
         position: "absolute",
@@ -22,24 +22,22 @@ export const styles = StyleSheet.create({
     },
 
     logo: {
-        width: 35,
-        height: 35,
-        marginTop: "5%"
+        width: 40,
+        height: 40,
     },
 
     settingsIcon: {
         width: 30,
         height: 30,
-        marginTop: "50%"
     },
 
     libraryContainer: {
         justifyContent: "center",
-        paddingTop: "40%",
+        paddingTop: Platform.OS === "web" ? "13%" : "40%",
         gap: 70,
         flexDirection: "row",
         flexWrap: "wrap",
-        bottom: "20%"
+        marginBottom: "20%"
     },
 
     createBook: {

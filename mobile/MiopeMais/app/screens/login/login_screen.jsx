@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { styles } from "./style";
 
@@ -15,7 +15,9 @@ export default function LoginScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.subContainer}>
-                <Image style={styles.logo} source={require("../../../assets/logo/miope-mais-logo.png")}/>
+                <View style={styles.headerContainer}>
+                    <Image style={styles.logo} source={require("../../../assets/logo/miope-mais-logo.png")}/>
+                </View>
 
                 <View style={styles.formContainer}>
                     <Text style={styles.label}>Email</Text>

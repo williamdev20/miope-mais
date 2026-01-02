@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet, Platform } from "react-native"
 
 export const styles = StyleSheet.create({
     container: {
@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#eae7e7ff",
-        width: "60%",
+        width: Platform.OS === "web" ? "40%" : "60%",
         right: 0,
         top: 0,
         height: "100%",
