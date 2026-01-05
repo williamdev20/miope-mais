@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Image, Text, TouchableOpacity, TouchableWithoutFeedback, ScrollView } from "react-native";
 import { File } from "expo-file-system";
+import { StatusBar } from "expo-status-bar";
+import * as NavigationBar from "expo-navigation-bar";
 import * as DocumentPicker from "expo-document-picker";
 import { styles } from "./styles/style";
 import Menu from "./menu";
 
 export default function HomeScreen({ navigation }) {
+    useEffect(() => {
+        NavigationBar.setVisibilityAsync("hidden");
+        NavigationBar.setButtonStyleAsync("dark");
+    }, []);
 
     const [showMenu, setShowMenu] = useState(false);
 
@@ -28,6 +34,11 @@ export default function HomeScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
+            <StatusBar
+                hidden={true}
+                style="auto"
+                backgroundColor="#000"
+            />
 
             <View style={styles.headerContainer}>
                 <Image style={styles.logo} source={require("../../../assets/logo/miope-mais-logo.png")} />
@@ -53,10 +64,11 @@ export default function HomeScreen({ navigation }) {
                         <Text style={styles.createBookText}>+</Text>
                     </TouchableOpacity>
 
-                    
+
                     <TouchableOpacity onPress={() => navigation.navigate("Book")} style={styles.book}>
                         <Text>Livro</Text>
                     </TouchableOpacity>
+                    
                     
                     {/* SÓ TESTE DAQUI PRA BAIXO */}
                     <TouchableOpacity style={styles.book}>

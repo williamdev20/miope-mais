@@ -49,8 +49,18 @@ export const styles = StyleSheet.create({
         justifyContent: "center"
     },
 
+    bookIcon: {
+        width: 40,
+        height: 40
+    },
+
+    mangaIcon: {
+        width: 40,
+        height: 40
+    },
+
     createBookText: {
-        fontSize: 40
+        fontSize: 45
     },
 
     book: {

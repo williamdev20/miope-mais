@@ -15,23 +15,34 @@ export default function PreferenceMenu({
     const navigation = useNavigation();
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} pointerEvents="box-none">
 
-            <View style={styles.headerContainer}>
-                <Previous closePreferenceMenuByPreviousFunc={closePreferenceMenu} />
+            <View style={styles.headerContainer} pointerEvents="auto">
+                <View style={styles.closeContainer}>
+                    <Previous closePreferenceMenuByPreviousFunc={closePreferenceMenu} />
+                    <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+                        <Image style={styles.exitIcon} source={require("../../../assets/preference/exit.png")} />
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.preferenceContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate("Palette")}>
                         <Image style={styles.palleteIcon} source={require("../../../assets/preference/pallete.png")}/>
                     </TouchableOpacity>
-                    <Text style={styles.fontIcon} onPress={() => navigation.navigate("Font")}>Aa</Text>
+
+                    <TouchableOpacity onPress={() => navigation.navigate("Font")}>
+                        <Text style={styles.fontIcon}>Aa</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 
-            <View style={styles.footerContainer}>
+            <View style={styles.footerContainer} pointerEvents="auto">
                 <Text style={styles.footerText}>{currentPage}/{numberOfPages}</Text>
 
                 <View style={styles.progressBookContainer}>
-                    <Text style={styles.nextPageIcon} onPress={previousPageProps}>{"<-"}</Text>
+                    <TouchableOpacity onPress={previousPageProps}>
+                        <Text style={styles.nextPageIcon}>{"<-"}</Text>
+                    </TouchableOpacity>
                     <Slider 
                         style={{width: 240, height: 45}}
                         disabled={false}
@@ -44,7 +55,9 @@ export default function PreferenceMenu({
                         minimumTrackTintColor="#4a4040ff"
                         maximumTrackTintColor="#FFF"
                     />
-                    <Text style={styles.previousPageIcon} onPress={nextPageProps}>{"->"}</Text>
+                    <TouchableOpacity onPress={nextPageProps}>
+                        <Text style={styles.previousPageIcon}>{"->"}</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             

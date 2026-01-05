@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "trasnparent",
+        justifyContent: "space-between",
+        backgroundColor: "transparent",
         width: "100%",
         height: "100%",
         top: 0,
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     touchZone: {
         backgroundColor: "transparent",
         height: "100%",
-        flex: 1,
+        width: "25%",
         zIndex: 1000
     },
 
@@ -31,7 +31,11 @@ export const styles = StyleSheet.create({
 
     textBook: {
         paddingHorizontal: 20,
-        paddingVertical: 40,
+        paddingTop: 30,
         backgroundColor: "lightyellow"
     },
+
+    textContent: {
+        fontSize: 15
+    }
 })
