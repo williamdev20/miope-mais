@@ -1,11 +1,8 @@
 import pymupdf
 
 def create_book_from_pdf(pdf_path: bytes) -> dict[int, str]:
-    if pdf_path.endswith(b".pdf"):
-        doc = pymupdf.open(stream=pdf_path, filetype="pdf")
-    else:
-        raise TypeError("[ERROR] This file isn't a PDF!")
-    
+    doc = pymupdf.open(stream=pdf_path, filetype="pdf")
+
     book: dict[int, str] = {}
 
     try:
