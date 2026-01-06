@@ -1,15 +1,30 @@
 import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { userFormSchema } from "../../schemas/user";
 import { styles } from "./style";
 
 export default function LoginScreen({ navigation }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState({});
 
     const checkCredentials = () => {
-        if (email.trim() === "" && password.trim() === "") {
-            alert("Campos faltando!")
+        const result = userFormSchema.safeParse({email, password});
+
+        if (!result.success) {
+            const fieldErrors = {};
+
+            result.error.issues.forEach(err => {
+                const field = err.path[0];
+                fieldErrors[field] = err.message;
+            });
+
+            setErrors(fieldErrors);
+            alert(Object.values(fieldErrors).join("\n"));
+            return;
         }
+
+        setErrors({});
     }
 
     return (
