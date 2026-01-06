@@ -8,6 +8,7 @@ from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from django.core.files.base import ContentFile
 
 """
 Para possivelmente colocar imagem pro meu mano cley cley:
@@ -32,7 +33,7 @@ class IngestionPDFAPIView(APIView):
         pdf_bytes = pdf_file.read()
 
         try:
-            pages = create_book_from_pdf(pdf_bytes)
+            cape, pages = create_book_from_pdf(pdf_bytes)
         except TypeError as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
@@ -40,6 +41,12 @@ class IngestionPDFAPIView(APIView):
             owner=request.user,
             name=pdf_file.name,
             number_of_pages=len(pages)
+        )
+
+        book.cape.save(
+            f"{pdf_file.name}.jpg",
+            ContentFile(cape),
+            save=True
         )
 
         for page in range(len(pages)):
