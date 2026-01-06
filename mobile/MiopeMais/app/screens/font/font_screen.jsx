@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { useState } from "react";
-import { styles } from "./style";
+import { styles } from "@/styles/font/style";
 import PreviousBook from "../../../components/PreviousBook";
 import SaveButton from "../../../components/SaveButton";
 

@@ -9,8 +9,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         width: "100%",
         backgroundColor: "#000",
-        paddingTop: 150,
-        paddingBottom: 100
     },
 
     changeColorsContainer: {
@@ -182,6 +180,6 @@ export const styles = StyleSheet.create({
     footerContainer: {
         bottom: Platform.OS === "web" ? "5%" : "12%",
         position: "absolute",
-        zIndex: 2      
+        zIndex: 100
     }
 })

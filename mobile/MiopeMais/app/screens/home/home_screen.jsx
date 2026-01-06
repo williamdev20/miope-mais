@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { View, Image, Text, TouchableOpacity, TouchableWithoutFeedback, ScrollView } from "react-native";
-import { File } from "expo-file-system";
-import { StatusBar } from "expo-status-bar";
-import * as NavigationBar from "expo-navigation-bar";
 import * as DocumentPicker from "expo-document-picker";
-import { styles } from "./styles/style";
+import { File } from "expo-file-system";
+import * as NavigationBar from "expo-navigation-bar";
+import { StatusBar } from "expo-status-bar";
+import { useEffect, useState } from "react";
+import { Image, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import { styles } from "@/styles/home/style";
 import Menu from "./menu";
 
 export default function HomeScreen({ navigation }) {
@@ -54,10 +54,10 @@ export default function HomeScreen({ navigation }) {
             )}
 
             {showMenu && (
-                <Menu close={() => setShowMenu(false)} />
+                <Menu close={() => setShowMenu(false)} navigation={navigation}/>
             )}
 
-            <ScrollView>
+            <ScrollView scrollEnabled={!showMenu} pointerEvents={showMenu ? "none" : "auto"}>
                 <View style={styles.libraryContainer}>
 
                     <TouchableOpacity onPress={pickFile} style={styles.createBook}>

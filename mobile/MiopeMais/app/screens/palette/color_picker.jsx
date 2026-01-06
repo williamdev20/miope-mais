@@ -1,7 +1,10 @@
-import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, Image, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 import ColorPicker from "react-native-wheel-color-picker";
 
-export default function ColorPickerComponent({ close }) {
+export default function ColorPickerComponent({ close, getColorPickerProp }) {
+    const [color, setColor] = useState("#fff")
+
     return (
         <View style={styles.colorPickerContainer}>
             <TouchableOpacity onPress={close}  style={styles.headerContainer}>
@@ -16,6 +19,18 @@ export default function ColorPickerComponent({ close }) {
                 row={false}
                 useNativeDriver={false}
                 useNativeLayout={false}
+                onColorChangeComplete={(color) => {
+                    getColorPickerProp(color);
+                }}
+            />
+
+            <TextInput
+                style={styles.input}
+                placeholder="#"
+                placeholderTextColor={"#fff"}
+                value={getColorPickerProp}
+                onChangeText={setColor}
+                keyboardType="default"
             />
         </View>
     )
@@ -58,6 +73,19 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         padding: "7%",
-        marginBottom: "45%"
+        bottom: "18%",
+        position: "absolute"
+    },
+
+    input: {
+        width: "90%",
+        borderWidth: 1,
+        borderColor: "#fff",
+        height: 50,
+        borderRadius: 10,
+        paddingHorizontal: 15,
+        bottom: "40%",
+        position: "absolute",
+        color: "#fff"
     }
 })

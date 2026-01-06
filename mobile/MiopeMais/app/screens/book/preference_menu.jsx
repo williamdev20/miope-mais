@@ -1,8 +1,8 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { styles } from "./styles/preferece_menu_style";
-import Previous from "../../../components/Previous";
 import Slider from "@react-native-community/slider";
 import { useNavigation } from "expo-router";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import Previous from "../../../components/Previous";
+import { styles } from "@/styles/book/preferece_menu_style";
 
 export default function PreferenceMenu({
     closePreferenceMenu,

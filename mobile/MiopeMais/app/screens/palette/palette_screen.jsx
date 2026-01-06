@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { styles } from "./style";
-import { useState, useEffect } from "react";
+import { styles } from "@/styles/palette/style";
+import { useState } from "react";
 import { Checkbox } from 'expo-checkbox';
 import PreviousBook from "../../../components/PreviousBook";
 import ColorPickerComponent from "./color_picker";
@@ -20,6 +20,11 @@ export default function PaletteScreen() {
 
     const colorModalFunc = () => {
         setColorModal(true);
+    }
+
+    const getColorPicker = (color) => {
+        console.log("COR: " + color);
+        return color;
     }
 
     const handleBackgroundColorSelect = (colorNumber) => {
@@ -134,7 +139,7 @@ export default function PaletteScreen() {
             </View>
 
              {colorModal && (
-                <ColorPickerComponent close={() => setColorModal(false)} />
+                <ColorPickerComponent close={() => setColorModal(false)} getColorPickerProp={getColorPicker} />
             )}
         </View>
     )

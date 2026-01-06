@@ -1,9 +1,15 @@
-import { useState } from "react";
-import { userFormSchema } from "../../schemas/user";
+import { useState, useEffect } from "react";
+import { userFormSchema } from "@/schemas/user";
+import * as NavigationBar from "expo-navigation-bar";
+import { StatusBar } from "expo-status-bar";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-import { styles } from "./style";
+import { styles } from "@/styles/signup/style";
 
 export default function SignupScreen({ navigation }) {
+    useEffect(() => {
+        NavigationBar.setButtonStyleAsync("dark");
+    }, []);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
@@ -29,6 +35,11 @@ export default function SignupScreen({ navigation }) {
     
     return (
         <View style={styles.container}>
+            <StatusBar
+                style="dark"
+                backgroundColor="#000"
+            />
+
             <View style={styles.subContainer}>
                 <View style={styles.headerContainer}>
                     <Image style={styles.logo} source={require("../../../assets/logo/miope-mais-logo.png")}/>

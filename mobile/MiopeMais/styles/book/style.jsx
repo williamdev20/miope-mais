@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         width: "100%",
-        backgroundColor: "lightyellow"
+        backgroundColor: "#fff"
     },
 
     area: {
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     textBook: {
         paddingHorizontal: 20,
         paddingTop: 30,
-        backgroundColor: "lightyellow"
+        backgroundColor: "#fff"
     },
 
     textContent: {

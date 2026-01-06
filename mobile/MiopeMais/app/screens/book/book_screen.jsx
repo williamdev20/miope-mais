@@ -1,8 +1,8 @@
-import { View, Text, TouchableWithoutFeedback, ScrollView } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import * as NavigationBar from "expo-navigation-bar";
-import { styles } from "./styles/style";
+import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
+import { ScrollView, Text, TouchableWithoutFeedback, View } from "react-native";
+import { styles } from "@/styles/book/style";
 import PreferenceMenu from "./preference_menu";
 
 // Para implementações futuras: Permitir que o usuário controle a página atual pelos botões de volume do celular

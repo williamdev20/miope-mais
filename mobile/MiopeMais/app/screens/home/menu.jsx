@@ -1,9 +1,9 @@
-import { View, Image, Text, TouchableOpacity } from "react-native";
-import { styles } from "./styles/menu";
-import { useNavigation } from "expo-router";
+//import { useNavigation } from "expo-router";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { styles } from "@/styles/home/menu";
 
-export default function Menu({ close }) {
-    const navigation = useNavigation();
+export default function Menu({ close, navigation }) {
+    //const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
@@ -15,13 +15,13 @@ export default function Menu({ close }) {
             </View>
 
             <View style={styles.optionsPreference}>
-                <TouchableOpacity onPress={() => navigation.navigate("Font")}>
+                <TouchableOpacity onPress={() => navigation.navigate("Palette")}>
                     <Text style={styles.options}>Ajustar cor de fundo</Text>
                 </TouchableOpacity>
 
                 <View style={styles.line} />
 
-                <TouchableOpacity onPress={() => navigation.navigate("Palette")}>
+                <TouchableOpacity onPress={() => navigation.navigate("Font")}>
                     <Text style={styles.options}>Ajustar tamanho da fonte</Text>
                 </TouchableOpacity>
                 <View style={styles.line} />

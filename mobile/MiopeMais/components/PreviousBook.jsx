@@ -6,7 +6,7 @@ export default function PreviousBook() {
 
     return (
         <View>
-            <TouchableOpacity onPress={() => navigation.navigate("Book")}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image style={styles.undoIcon} source={require("../assets/preference/undo.png")} />
             </TouchableOpacity>
         </View>
