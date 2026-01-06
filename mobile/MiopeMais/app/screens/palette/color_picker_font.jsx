@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Image, TouchableOpacity, StyleSheet, TextInput } from "react-native";
 import ColorPicker from "react-native-wheel-color-picker";
 
-export default function ColorPickerBackgroundColorComponent({ close, getColorPickerBackgroundColorProp }) {
+export default function ColorPickerFontColorComponent({ close, getColorPickerFontColorProp }) {
     const [color, setColor] = useState("#fff");
     const [inputColor, setInputColor] = useState("#fff");
 
@@ -24,7 +24,7 @@ export default function ColorPickerBackgroundColorComponent({ close, getColorPic
                 useNativeLayout={false}
                 color={color}
                 onColorChangeComplete={(color) => {
-                    getColorPickerBackgroundColorProp(color);
+                    getColorPickerFontColorProp(color);
                     setColor(color);
                     setInputColor(color);
                 }}
@@ -32,20 +32,20 @@ export default function ColorPickerBackgroundColorComponent({ close, getColorPic
 
             <TextInput
                 style={styles.input}
-                placeholder="#"
+                placeholder="Font"
                 placeholderTextColor={"#fff"}
                 value={inputColor}
                 onChangeText={(text) => {
-                    if (text[0] != "#") {
+                     if (text[0] != "#") {
                         text = "#" + text
                     }
 
                     setInputColor(text);
-
                     if (isValidColor(text)) {
                         setColor(text);
-                        getColorPickerBackgroundColorProp(text);
+                        getColorPickerFontColorProp(text);
                     }
+
                 }}
                 keyboardType="default"
             />

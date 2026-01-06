@@ -3,11 +3,13 @@ import { styles } from "@/styles/palette/style";
 import { useState } from "react";
 import { Checkbox } from 'expo-checkbox';
 import PreviousBook from "../../../components/PreviousBook";
-import ColorPickerComponent from "./color_picker";
+import ColorPickerBackgroundColorComponent from "./color_picker";
+import ColorPickerFontColorComponent from "./color_picker_font";
 import SaveButton from "../../../components/SaveButton";
 
 export default function PaletteScreen() {
-    const [colorModal, setColorModal] = useState(false);
+    const [backgroundColorModal, setBackgroundColorModal] = useState(false);
+    const [fontColorModal, setFontColorModal] = useState(false);
     const [isCheckedBackgroundColor1, setCheckedBackgroundColor1] = useState(true);
     const [isCheckedBackgroundColor2, setCheckedBackgroundColor2] = useState(false);
     const [isCheckedBackgroundColor3, setCheckedBackgroundColor3] = useState(false);
@@ -18,12 +20,21 @@ export default function PaletteScreen() {
     const [backgroundColor, setBackgroundColor] = useState("#f5f5f5");
     const [textColor, setTextColor] = useState("#1e1e1e");
 
-    const colorModalFunc = () => {
-        setColorModal(true);
+    const backgroundColorModalFunc = () => {
+        setBackgroundColorModal(true);
     }
 
-    const getColorPicker = (color) => {
-        console.log("COR: " + color);
+    const fontColorModalFunc = () => {
+        setFontColorModal(true);
+    }
+
+    const getColorPickerBackgroundColor = (color) => {
+        console.log("COR DO FUNDO: " + color);
+        return color;
+    }
+
+    const getColorPickerFontColor = (color) => {
+        console.log("COR DA FONTE: " + color);
         return color;
     }
 
@@ -95,7 +106,7 @@ export default function PaletteScreen() {
                             /> 
                         </View>
 
-                        <TouchableOpacity onPress={colorModalFunc}>
+                        <TouchableOpacity onPress={backgroundColorModalFunc}>
                             <Image style={styles.editIcon} source={require("../../../assets/preference/edit.png")} />
                         </TouchableOpacity>
 
@@ -126,7 +137,7 @@ export default function PaletteScreen() {
                             color={isCheckedTextColor2 ? '#4630EB' : undefined}
                         />
 
-                        <TouchableOpacity onPress={colorModalFunc}>
+                        <TouchableOpacity onPress={fontColorModalFunc}>
                             <Image style={styles.editIcon} source={require("../../../assets/preference/edit.png")} />
                         </TouchableOpacity>
                         
@@ -138,8 +149,12 @@ export default function PaletteScreen() {
                 <SaveButton />
             </View>
 
-             {colorModal && (
-                <ColorPickerComponent close={() => setColorModal(false)} getColorPickerProp={getColorPicker} />
+             {backgroundColorModal && (
+                <ColorPickerBackgroundColorComponent close={() => setBackgroundColorModal(false)} getColorPickerBackgroundColorProp={getColorPickerBackgroundColor} />
+            )}
+
+            {fontColorModal && (
+                <ColorPickerFontColorComponent close={() => setFontColorModal(false)} getColorPickerFontColorProp={getColorPickerFontColor} />
             )}
         </View>
     )
